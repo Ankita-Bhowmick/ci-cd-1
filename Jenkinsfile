@@ -25,11 +25,13 @@ pipeline {
             }
         }
 
-        stage('Docker Build') {
+        
+stages {
+        stage('Build Docker Image') {
             steps {
-                echo 'Building Docker image...'
-                // Replace "ankita-app" with your preferred image name
-                sh 'docker build -t ankita-app:latest .'
+                script {
+                    dockerImage = docker.build("ci-cd-1:${BUILD_NUMBER}")
+
             }
         }
     }
