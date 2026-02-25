@@ -6,23 +6,7 @@ pipeline {
         stage('Pull Code') {
             steps {
                 echo 'Pulling latest code from GitHub...'
-                git branch: 'main',
-                    url: 'https://github.com/Ankita-Bhowmick/ci-cd-1.git'
-            }
-        }
-
-        stage('Build') {
-            steps {
-                echo 'Installing dependencies...'
-                sh 'pip3 install -r requirements.txt'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                echo 'Running tests...'
-                // Skip pytest for now if you don't have tests
-                sh 'echo "No tests available"'
+                git branch: 'main', url: 'https://github.com/Ankita-Bhowmick/ci-cd-1.git'
             }
         }
 
@@ -35,6 +19,11 @@ pipeline {
             }
         }
 
+        stage('Test') {
+            steps {
+                echo "No tests available"
+            }
+        }
     }
 
     post {
